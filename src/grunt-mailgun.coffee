@@ -12,10 +12,10 @@ module.exports = (grunt) ->
 
     if @files.length > 0
 
-      @files.forEach (file) ->
+      @filesSrc.forEach (filePath) ->
 
 
-        body = grunt.file.read(file.src) # janksauce
+        body = grunt.file.read(filePath)
         
         raw = "From: #{sender}\nTo: #{recipient}\nContent-Type: text/html; charset=utf-8\nSubject: #{subject}\n\n #{body},"
         
