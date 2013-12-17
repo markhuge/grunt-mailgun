@@ -38,7 +38,9 @@
     "grunt": "~0.4.2"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "mailgun",
+    "email"
   ],
   "dependencies": {
     "mailgun": "~0.4.2",
