@@ -17,7 +17,7 @@ module.exports = (grunt) ->
 
         body = grunt.file.read(filePath)
         
-        raw = "From: #{sender}\nTo: #{recipient}\nContent-Type: text/html; charset=utf-8\nSubject: #{subject}\n\n #{body},"
+        raw = "From: #{sender}\nTo: #{recipient}\nContent-Type: text/html; charset=utf-8\nSubject: #{subject}\n\n #{body}"
         
 
         mail.sendRaw sender, recipient, raw, (err) ->
