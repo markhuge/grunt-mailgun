@@ -1,7 +1,7 @@
 {
   "name": "grunt-mailgun",
   "description": "Send emails though mailgun as part of your build. Created to test our email template builds.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/markhuge/grunt-mailgun",
   "author": {
     "name": "Mark Wilkerson",
@@ -24,15 +24,11 @@
   "engines": {
     "node": ">= 0.8.0"
   },
-  "scripts": {
-    "postinstall": "make build"
-  },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt": "~0.4.2",
-    "coffee-script": "~1.6.3"
+    "grunt": "~0.4.2"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"
@@ -43,8 +39,7 @@
     "email"
   ],
   "dependencies": {
-    "mailgun": "~0.4.2",
-    "coffee-script": "~1.6.3"
-
+    "lodash": "~2.4.1",
+    "mailgun-send": "0.0.1"
   }
 }
