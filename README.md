@@ -1,4 +1,4 @@
-# grunt-mailgun ![Dependency Status](https://gemnasium.com/markhuge/grunt-mailgun.svg)
+# grunt-mailgun [![Code Climate](https://codeclimate.com/github/markhuge/grunt-mailgun.png)](https://codeclimate.com/github/markhuge/grunt-mailgun) ![Dependency Status](https://gemnasium.com/markhuge/grunt-mailgun.svg)
 
 > Send emails though mailgun as part of your build. Created to test our email template builds.
 
