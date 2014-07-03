@@ -1,5 +1,5 @@
 # grunt-mailgun [![Code Climate](https://codeclimate.com/github/markhuge/grunt-mailgun.png)](https://codeclimate.com/github/markhuge/grunt-mailgun) ![Dependency Status](https://gemnasium.com/markhuge/grunt-mailgun.svg)
-
+[![NPM](https://nodei.co/npm/grunt-mailgun.png?compact=true)](https://nodei.co/npm/grunt-mailgun/)
 > Send emails though mailgun as part of your build. Created to test our email template builds.
 
 This is being hastily deployed for internal consumption. You probably shouldn't use this yet.
