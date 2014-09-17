@@ -31,7 +31,7 @@ module.exports = function (grunt) {
         var _opts = _.clone(opts);
         _opts.body = grunt.file.read(filePath);
         mailer.send(_opts, function () {
-          grunt.log.writeln('Sent' + filePath + ' to ' + _opts.recipient);
+          grunt.log.writeln('Sent ' + filePath + ' to ' + _opts.recipient);
           if (i < 1) { done(); } else { i--; } // This seems dirty
         });
         
