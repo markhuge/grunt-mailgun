@@ -70,18 +70,16 @@ You probably shouldn't use this right now, but if you insist...
 
 `src:` is one or more files to be used as an email body. A new email will be sent for each file.
 
-```coffeescript
-module.exports = (grunt) ->
-
-  grunt.initConfig
-    mailgun:
-      mailer:
-        options:
-          key: 'your-mailgun-API-key'
-          sender: 'noreply@testsauce.biz'
-          recipient: 'email.you.want.to.send.to@email.com'
-          subject: 'This is a test email'
-        src: ['templates/*.html']
-  
-  grunt.loadNpmTasks 'grunt-mailgun'
+```javascript
+mailgun: {
+	mailer: {
+		options: {
+			key: 'key-yourmailgunapikey',
+			sender: 'noreply@example.com',
+			recipient: 'recipient@example.com',
+			subject: 'This is a test email'
+		},
+		src: ['templates/*.html']
+	}
+}
 ```
