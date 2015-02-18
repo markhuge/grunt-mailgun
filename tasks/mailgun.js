@@ -21,29 +21,35 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('mailgun', 'Send emails through mailgun as part of your build.', function () {
     var done = this.async();
     var opts = _.pick(this.data.options,['sender','recipient','subject','body']);
-  
+
     // Register our mailer instance with out API key
     mailer.config({key: this.data.options.key});
-    
+
     if (this.files.length > 0) {
       var i = this.files.length;
       this.filesSrc.forEach(function (filePath) {
         var _opts = _.clone(opts);
         _opts.body = grunt.file.read(filePath);
-        mailer.send(_opts, function () {
+        mailer.send(_opts, function (err) {
+          if (err) {
+            return grunt.log.error(err);
+          }
           grunt.log.writeln('Sent ' + filePath + ' to ' + _opts.recipient);
           if (i < 1) { done(); } else { i--; } // This seems dirty
         });
-        
+
       });
 
     } else {
-      mailer.send(opts, function () {
+      mailer.send(opts, function (err) {
+        if (err) {
+          return grunt.log.error(err);
+        }
         grunt.log.writeln('Sent mailgun msg to ' + opts.recipient);
         done();
       });
-       }
-    
+     }
+
   });
 
 };
