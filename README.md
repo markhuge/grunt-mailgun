@@ -1,8 +1,12 @@
-# grunt-mailgun [![Code Climate](https://codeclimate.com/github/markhuge/grunt-mailgun.png)](https://codeclimate.com/github/markhuge/grunt-mailgun) ![Dependency Status](https://gemnasium.com/markhuge/grunt-mailgun.svg)
+# grunt-mailgun [![Code Climate](https://codeclimate.com/github/markhuge/grunt-mailgun.png)](https://codeclimate.com/github/markhuge/grunt-mailgun) [![Dependency Status](https://gemnasium.com/markhuge/grunt-mailgun.svg)](https://gemnasium.com/markhuge/grunt-mailgun)
 [![NPM](https://nodei.co/npm/grunt-mailgun.png?compact=true)](https://nodei.co/npm/grunt-mailgun/)
 > Send emails though mailgun as part of your build. Created to test our email template builds.
 
-This is being hastily deployed for internal consumption. You probably shouldn't use this yet.
+## Abstract
+
+We have a build pipeline that compiles jade and sass into inline-styled HTML pages for email msgs. 
+
+The final step is to shoot out tests of each template to make sure nothing looks wonky.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
@@ -22,11 +26,24 @@ grunt.loadNpmTasks('grunt-mailgun');
 *This plugin was designed to work with Grunt 0.4.x. If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4)*
 
 
-## Use case
 
-We have a build pipeline that compiles jade and sass into inline-styled HTML pages for email msgs.
+## Usage
 
-The final step is to shoot out tests of each template to make sure nothing looks wonky.
+`src:` is one or more files to be used as an email body. A new email will be sent for each file.
+
+```javascript
+mailgun: {
+  marketingTemplates: {
+    options: {
+      key: 'key-yourmailgunapikey',
+      sender: 'noreply@example.com',
+      recipient: 'recipient@example.com',
+      subject: 'This is a test email'
+    },
+    src: ['templates/marketing/*.html']
+  }
+}
+```
 
 ## mailgun task
 _Run this task with the `grunt mailgun` command._
@@ -64,22 +81,3 @@ using `body` for the msg content.
 
 
 
-## Usage
-
-You probably shouldn't use this right now, but if you insist...
-
-`src:` is one or more files to be used as an email body. A new email will be sent for each file.
-
-```javascript
-mailgun: {
-	mailer: {
-		options: {
-			key: 'key-yourmailgunapikey',
-			sender: 'noreply@example.com',
-			recipient: 'recipient@example.com',
-			subject: 'This is a test email'
-		},
-		src: ['templates/*.html']
-	}
-}
-```
