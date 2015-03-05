@@ -10,46 +10,50 @@
 'use strict';
 
 var mailer = require('mailgun-send'),
-    _      = require('lodash');
+    clone  = require('lodash.clone'),
+    pick   = require('lodash.pick');
 
+var task = {
+  name: 'mailgun',
+  description: 'Send emails through Mailgun as part of your build'
+};
 
 module.exports = function (grunt) {
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
-
-  grunt.registerMultiTask('mailgun', 'Send emails through mailgun as part of your build.', function () {
-    var done = this.async();
-    var opts = _.pick(this.data.options,['sender','recipient','subject','body']);
+  grunt.registerMultiTask(task.name, task.description, function () {
+    
+    var done   = this.async(),
+        opts   = this.data.options,
+        params = pick(opts, [ 'sender', 'recipient', 'subject', 'body' ]),
+        count  = this.filesSrc.length;
 
     // Register our mailer instance with out API key
-    mailer.config({key: this.data.options.key});
-
-    if (this.files.length > 0) {
-      var i = this.files.length;
-      this.filesSrc.forEach(function (filePath) {
-        var _opts = _.clone(opts);
-        _opts.body = grunt.file.read(filePath);
-        mailer.send(_opts, function (err) {
-          if (err) {
-            return grunt.log.error(err);
-          }
-          grunt.log.writeln('Sent ' + filePath + ' to ' + _opts.recipient);
-          if (i < 1) { done(); } else { i--; } // This seems dirty
-        });
-
+    mailer.config({ key: opts.key });
+    
+    // If there's no files, just send params
+    if (count < 1) { return send(params, function () { done(); }); }
+    
+    // Otherwise iterate over files
+    this.filesSrc.forEach(function (filepath) {
+      var opts  = clone(params);
+      opts.file = filepath;
+      opts.body = grunt.file.read(filepath);
+      send(opts, function () {
+        count--;
+        if (count < 1)  { return done(); }
       });
-
-    } else {
-      mailer.send(opts, function (err) {
-        if (err) {
-          return grunt.log.error(err);
-        }
-        grunt.log.writeln('Sent mailgun msg to ' + opts.recipient);
-        done();
-      });
-     }
-
+    });
+      
   });
 
+  function send (opts, cb) {
+    mailer.send(opts, function (err) {
+      if (err) { return grunt.log.error(err); }
+      var msg = opts.file || 'mailgun msg';
+      grunt.log.writeln('Sent ' + msg + ' to ' + opts.recipient);
+      if (cb) { cb(); }
+    });
+  }
+
 };
+
