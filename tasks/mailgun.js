@@ -11,7 +11,8 @@
 
 var mailer = require('mailgun-send'),
     clone  = require('lodash.clone'),
-    pick   = require('lodash.pick');
+    pick   = require('lodash.pick'),
+    crypto = require('crypto');
 
 var task = {
   name: 'mailgun',
@@ -27,6 +28,7 @@ module.exports = function (grunt) {
         params = buildParams(opts),
         count  = this.filesSrc.length;
 
+
     // Register our mailer instance with out API key
     mailer.config({ key: opts.key });
     
@@ -35,10 +37,14 @@ module.exports = function (grunt) {
     
     // Otherwise iterate over files
     this.filesSrc.forEach(function (filepath) {
-      var opts  = clone(params);
-      opts.file = filepath;
-      opts.body = grunt.file.read(filepath)
-      send(opts, function () {
+      var options = clone(params);
+     
+      // Attempt to prevent emai client conversation threading
+      if (opts.preventThreading) { options = preventThreading(options); }
+      
+      options.file = filepath;
+      options.body = grunt.file.read(filepath);
+      send(options, function () {
         count--;
         if (count < 1)  { return done(); }
       });
@@ -59,6 +65,13 @@ module.exports = function (grunt) {
     obj.subject = obj.subject || 'grunt-mailgun';
     obj.body    = obj.body   || 'grunt-mailgun';
     return pick(obj, [ 'sender', 'recipient', 'subject', 'body' ]);
+  }
+
+  function preventThreading (obj) {
+    var pad = crypto.randomBytes(10).toString('hex');
+    obj.subject += ' - ' + pad;
+    obj.headers = "\nIn-Reply-To: <" + pad + ">";
+    return obj;
   }
 };
 
