@@ -18,5 +18,6 @@ deploy:
   file: grunt-mailgun-$TRAVIS_BRANCH.tar.gz
   skip_cleanup: true
   on:
+    repo: markhuge/grunt-mailgun
     tags: true
     all_branches: true
