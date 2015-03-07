@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- '0.11'
+- '0.10'
+after_success: tar czvf grunt-mailgun-$TRAVIS_BRANCH.tar.gz package.json node_modules/ tasks/ Gruntfile.js README.md LICENSE-MIT
+deploy:
+- provider: npm
+  email: mark@segfawlt.net
+  api_key:
+    secure: AXicMsdBnYCC8xaFC89GoylNJSRm4Irk2/ME1ySQHiSHCiZMtHxE9oVyP+NdwdfWRIk8D27UWGIs8YqC3tsKp6LVhd6RStCVGLJUHJ6Qomvgi4ayA6JzbPmWlLbwe/3e7/1CCIW6Uoe+Ra54zFOzlRb7/BRqIkkbYgoJZ3VVwRI=
+  on:
+    tags: true
+    repo: markhuge/grunt-mailgun
+    all_branches: true
+- provider: releases
+  api_key: 
+    secure: KlMgxk13olMr8IRw18J5UD86XZ4Ml4tBWO26MHss1p7SbUxzT/MoA8eOvhSyeFSxEkKP+IL/ULK8/IEu7Md6rCIFZPHf0ZRViSfwIubQi4AMPxSenTlvqemaIeCzkLb/k5WY/i2VbI10zLVzVkwNOyiXCB9/pBDtTcmtRTpoH6I=
+  file: grunt-mailgun-$TRAVIS_BRANCH.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
