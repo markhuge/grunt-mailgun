@@ -24,7 +24,7 @@ module.exports = function (grunt) {
     
     var done   = this.async(),
         opts   = this.data.options,
-        params = pick(opts, [ 'sender', 'recipient', 'subject', 'body' ]),
+        params = buildParams(opts),
         count  = this.filesSrc.length;
 
     // Register our mailer instance with out API key
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
     this.filesSrc.forEach(function (filepath) {
       var opts  = clone(params);
       opts.file = filepath;
-      opts.body = grunt.file.read(filepath);
+      opts.body = grunt.file.read(filepath)
       send(opts, function () {
         count--;
         if (count < 1)  { return done(); }
@@ -55,5 +55,10 @@ module.exports = function (grunt) {
     });
   }
 
+  function buildParams (obj) {
+    obj.subject = obj.subject || 'grunt-mailgun';
+    obj.body    = obj.body   || 'grunt-mailgun';
+    return pick(obj, [ 'sender', 'recipient', 'subject', 'body' ]);
+  }
 };
 

@@ -51,33 +51,17 @@ _Run this task with the `grunt mailgun` command._
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
 ### Options
 
-#### key
-Type: `String`
+Required:
 
-Your [Mailgun API key](http://documentation.mailgun.com/quickstart.html#authentication)
-
-#### sender
-Type: `String`
-
-The 'from' name and address. Acceptable domains may be restricted by your mailgun account settings
-
-#### recipient
-Type: `String` or `Array`
-
-One or more email addresses to send your msg to. Multiple addresses should be
+- key (string) - Your [Mailgun API key](http://documentation.mailgun.com/quickstart.html#authentication)
+- sender (string) - The 'from' name and address. Acceptable domains may be restricted by your mailgun account settings
+- recipient (string | array) - One or more email addresses to send your msg to. Multiple addresses should be
 entered as an array.
 
 
-#### subject
-Type: `String`
+Optional:
 
-The subject of your email
-
-#### body
-Type: `String`
-
-If no files are specified in `src:`, the mailgun task will send a plaintext email
-using `body` for the msg content.
-
-
+- Subject (string) - The subject of your email. Defaults to 'grunt-mailgun'
+- body (string) - The body content. If no files are specified in `src:`, the mailgun task will send a plaintext email
+using `body` for the msg content. Defaults to 'grunt-mailgun'.
 
