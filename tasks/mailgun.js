@@ -39,7 +39,7 @@ module.exports = function (grunt) {
     this.filesSrc.forEach(function (filepath) {
       var options = clone(params);
      
-      // Attempt to prevent emai client conversation threading
+      // Attempt to prevent email client conversation threading
       if (opts.preventThreading) { options = preventThreading(options); }
       
       options.file = filepath;
