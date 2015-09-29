@@ -39,7 +39,9 @@ mailgun: {
       sender: 'noreply@example.com',
       recipient: 'recipient@example.com',
       subject: 'This is a test email',
-      preventThreading: true
+      preventThreading: true,
+      hideRecipient: true
+
     },
     src: ['templates/marketing/*.html']
   }
@@ -67,3 +69,4 @@ Optional:
 using `body` for the msg content. Defaults to 'grunt-mailgun'.
 - preventThreading (boolean) - Attempt to suppress conversation threading behavior in email clients by varying the 
 subject text and the In-Reply-To header.
+- hideRecipient (boolean) - Hide the recipient email address in log output.

@@ -41,7 +41,6 @@ module.exports = function (grunt) {
      
       // Attempt to prevent email client conversation threading
       if (opts.preventThreading) { options = preventThreading(options); }
-      
       options.file = filepath;
       options.body = grunt.file.read(filepath);
       send(options, function () {
@@ -54,9 +53,11 @@ module.exports = function (grunt) {
 
   function send (opts, cb) {
     mailer.send(opts, function (err) {
+      var rcp = '';
       if (err) { return grunt.log.error(err); }
       var msg = opts.file || 'mailgun msg';
-      grunt.log.writeln('Sent ' + msg + ' to ' + opts.recipient);
+      if (!opts.hideRecipient) { rcp = ' to ' + opts.recipient; }
+      grunt.log.writeln('Sent ' + msg + rcp);
       if (cb) { cb(); }
     });
   }
