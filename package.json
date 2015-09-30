@@ -7,6 +7,9 @@
     "name": "Mark Wilkerson",
     "email": "mark@markwilkerson.me"
   },
+  "scripts": {
+    "test": "node test/test"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/markhuge/grunt-mailgun.git"
