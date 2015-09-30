@@ -1,7 +1,9 @@
 language: node_js
 node_js:
-- '0.11'
 - '0.10'
+- '4.0'
+- '4.1'
+
 after_success: tar czvf grunt-mailgun-$TRAVIS_BRANCH.tar.gz package.json node_modules/ tasks/ Gruntfile.js README.md LICENSE-MIT
 deploy:
 - provider: npm
