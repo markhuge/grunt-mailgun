@@ -38,7 +38,6 @@
   ],
   "dependencies": {
     "lodash.clone": "^3.0.1",
-    "lodash.pick": "^3.0.0",
     "mailgun-stream": "^0.2.3",
     "mutate-stream": "0.0.0",
     "stream-defaults": "0.1.0",
