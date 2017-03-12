@@ -1,3 +1,7 @@
+# NOTE: MAILGUN CHANGED THEIR API
+Mailgun changed their API and released an official SDK. I'm porting this, and my other mailgun packages to the new SDK.
+
+
 # grunt-mailgun [![Code Climate](https://codeclimate.com/github/markhuge/grunt-mailgun.png)](https://codeclimate.com/github/markhuge/grunt-mailgun) [![Dependency Status](https://gemnasium.com/markhuge/grunt-mailgun.svg)](https://gemnasium.com/markhuge/grunt-mailgun)
 [![NPM](https://nodei.co/npm/grunt-mailgun.png?compact=true)](https://nodei.co/npm/grunt-mailgun/)
 > Send emails though mailgun as part of your build. Created to test our email template builds.
