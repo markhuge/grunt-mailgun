@@ -40,6 +40,7 @@ mailgun: {
   marketingTemplates: {
     options: {
       key: 'key-yourmailgunapikey',
+      domain: 'example.com',
       sender: 'noreply@example.com',
       recipient: 'recipient@example.com',
       subject: 'This is a test email',
@@ -61,6 +62,7 @@ Task targets, files and options may be specified according to the grunt [Configu
 Required:
 
 - key (string) - Your [Mailgun API key](http://documentation.mailgun.com/quickstart.html#authentication)
+- domain (string) - Your Mailgun email domain
 - sender (string) - The 'from' name and address. Acceptable domains may be restricted by your mailgun account settings
 - recipient (string | array) - One or more email addresses to send your msg to. Multiple addresses should be
 entered as an array.
@@ -71,6 +73,4 @@ Optional:
 - subject (string) - The subject of your email. Defaults to 'grunt-mailgun'
 - body (string) - The body content. If no files are specified in `src:`, the mailgun task will send a plaintext email
 using `body` for the msg content. Defaults to 'grunt-mailgun'.
-- preventThreading (boolean) - Attempt to suppress conversation threading behavior in email clients by varying the 
-subject text and the In-Reply-To header.
-- hideRecipient (boolean) - Hide the recipient email address in log output.
+- preventThreading (boolean) - Attempt to suppress conversation threading behavior in email clients by varying the subject text and the In-Reply-To header.  - hideRecipient (boolean) - Hide the recipient email address in log output.
