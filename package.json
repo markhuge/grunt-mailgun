@@ -1,12 +1,13 @@
 {
   "name": "grunt-mailgun",
   "description": "Send emails though mailgun as part of your build. Created to test our email template builds.",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "homepage": "https://github.com/markhuge/grunt-mailgun",
   "author": {
     "name": "Mark Wilkerson",
     "email": "mark@markwilkerson.me"
   },
+  "license": "MIT",
   "scripts": {
     "test": "node test/test"
   },
