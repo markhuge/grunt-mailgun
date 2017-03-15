@@ -6,13 +6,13 @@
  * Licensed under the MIT license.
  */
 
-/*jslint node: true */
+/*jslint esversion: 6, node: true */
 'use strict';
 
-var mail  = require('../lib/mail.js'),
-    clone = require('lodash.clone');
+const mail  = require('../lib/mail.js');
+const clone = require('lodash.clone');
 
-var task = {
+const task = {
   name: 'mailgun',
   description: 'Send emails through Mailgun as part of your build'
 };
@@ -25,8 +25,6 @@ module.exports = function (grunt) {
     var done   = this.async(),
         opts   = this.data.options,
         count  = this.filesSrc.length;
-    
-    opts.log = grunt.log.writeln;
 
     if (count < 1) { return mail(opts, function () { 
       done(); });

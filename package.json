@@ -1,7 +1,7 @@
 {
   "name": "grunt-mailgun",
   "description": "Send emails though mailgun as part of your build. Created to test our email template builds.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "homepage": "https://github.com/markhuge/grunt-mailgun",
   "author": {
     "name": "Mark Wilkerson",
@@ -39,7 +39,7 @@
   ],
   "dependencies": {
     "lodash.clone": "^3.0.1",
-    "mailgun-stream": "^1.0.0",
+    "mailgun-stream": "^1.1.0",
     "mutate-stream": "0.0.0",
     "nothread": "^1.0.0",
     "stream-defaults": "0.1.0",
