@@ -8,9 +8,6 @@
     "email": "mark@markwilkerson.me"
   },
   "license": "MIT",
-  "scripts": {
-    "test": "node test/test"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/markhuge/grunt-mailgun.git"
