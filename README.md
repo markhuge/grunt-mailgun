@@ -1,5 +1,5 @@
-# NOTE: MAILGUN CHANGED THEIR API
-Mailgun changed their API and released an official SDK. I'm porting this, and my other mailgun packages to the new SDK.
+# NOTE: This repo is now archived
+I haven't used grunt in years and am no longer maintaining this repo.
 
 
 # grunt-mailgun [![Code Climate](https://codeclimate.com/github/markhuge/grunt-mailgun.png)](https://codeclimate.com/github/markhuge/grunt-mailgun) [![Dependency Status](https://gemnasium.com/markhuge/grunt-mailgun.svg)](https://gemnasium.com/markhuge/grunt-mailgun)
